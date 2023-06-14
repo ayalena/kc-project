@@ -1,9 +1,15 @@
 import './Home.css';
 import PageHeader from "../../components/PageHeader/PageHeader";
 import logo from '../../assets/mock-logo.jpg';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate  } from 'react-router-dom';
+import Button from '../../components/Button/Button';
 
 function Home() {
+    const navigate = useNavigate ();
+
+    function handleClick() {
+        navigate("/news");
+    }
     return(
         <>
         <PageHeader icon={logo} title="Welcome to KidsKonnect!"/>
@@ -37,6 +43,13 @@ function Home() {
                         similique sint vero?
                     </p>                    
                     <p>To go to the sessions, click <Link to="/sessions"> <b> here! </b> </Link> </p>
+                    <Button
+                        className="round-button"
+                        type="button"
+                        onClick={handleClick}
+                        text="NEWS!"
+                    >
+                    </Button>
                 </section>
             </div>
         </>

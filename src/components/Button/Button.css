@@ -1,9 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300;400&display=swap');
 
-button {
-
-}
-
 .round-button {
     display: inline-block;
     border-radius: 50%;
@@ -13,7 +9,7 @@ button {
     color: #e6e6ee;
     transform: rotate(12deg);
     margin-top: 15px;
-    margin-right: 255px;
+    /* margin-right: 255px; */
     font-weight: bold;
 }
 
@@ -23,7 +19,7 @@ button {
     transform: rotate(15deg);
 }
 
-.download-button {
+.session-button {
     background-color: #86eadc;
     margin: 15px;
     border-radius: 10px;
@@ -33,71 +29,7 @@ button {
     height: 30px;
 }
 
-.download-button:hover {
-    width: 205px;
-    height: 35px;
-}
-
-.delete-button {
-    background-color: #8e0000;
-    color: #e6e6ee;
-    margin: 15px;
-    border-radius: 10px;
-    font-size: 12px;
-    font-weight: bold;
-    width: 200px;
-    height: 30px;
-}
-
-.delete-button:hover {
-    width: 205px;
-    height: 35px;
-}
-
-.upload-button {
-    background-color: #86eadc;
-    margin: 15px;
-    border-radius: 10px;
-    font-size: 12px;
-    font-weight: bold;
-    width: 200px;
-    height: 30px;
-    color: black;
-}
-
-.upload-button:hover {
-    width: 205px;
-    height: 35px;
-}
-
-.media-button {
-    background-color: #8e0000;
-    color: #e6e6ee;
-    margin: 15px;
-    border-radius: 10px;
-    font-size: 12px;
-    font-weight: bold;
-    width: 200px;
-    height: 30px;
-}
-
-.media-button:hover {
-    width: 205px;
-    height: 35px;
-}
-
-.update-button {
-    background-color: #86eadc;
-    margin: 15px;
-    border-radius: 10px;
-    font-size: 12px;
-    font-weight: bold;
-    width: 200px;
-    height: 30px;
-    color: black;
-}
-
-.update-button:hover {
+.session-button:hover {
     width: 205px;
     height: 35px;
 }
@@ -106,6 +38,6 @@ button {
 @media screen and (min-width: 768px) {
 
     .round-button {
-        margin-right: 155px;
+        margin-right: 0px;
     }
 }

@@ -4,6 +4,7 @@ import PageHeader from "../../components/PageHeader/PageHeader";
 import logo from "../../assets/mock-logo.jpg";
 import './Sessions.css';
 import NavBar from "../../components/NavBar/NavBar";
+import Button from "../../components/Button/Button";
 
 function Sessions() {
     const [isMounted, setIsMounted] = useState(false);
@@ -14,6 +15,10 @@ function Sessions() {
     // children & childrenId
     const [childInfo, setChildInfo] = useState([]);
     const [currentChildInfo, setCurrentChildInfo] = useState([])
+
+    function handleClick() {
+        console.log('clicked');
+    }
 
     // getting the sessions
     useEffect(() => {
@@ -34,8 +39,8 @@ function Sessions() {
             setIsMounted(false)
         }
     }, [])
-      // getting the children
-      useEffect(() => {
+    // getting the children
+    useEffect(() => {
         setIsMounted(true);
         async function getChildrenData() {
             toggleFileLoading(true);
@@ -58,22 +63,6 @@ function Sessions() {
         <>
             <NavBar></NavBar>
             <PageHeader icon={logo} />
-            <div>
-                <p>Sessions overview</p>
-                <div>
-                    {sessionInfo.map(sessionId => {
-                        return <p
-                            key={sessionId.id}
-                            value={sessionId.id}
-                        >
-                            {sessionId.day}: {sessionId.start_time} - {sessionId.end_time}
-
-                        </p>
-                    })}
-                </div>
-            </div>
-
-
             <div className="sessions-container">
                 <p>Sessions</p>
                 <div>
@@ -82,12 +71,29 @@ function Sessions() {
                             key={sessionId.id}
                             value={sessionId.id}
                         >
-                            {sessionId.day}: {sessionId.start_time} - {sessionId.end_time}
-
+                            <p>{sessionId.day}: {sessionId.start_time} - {sessionId.end_time}</p>
+                            <p>{sessionId.product_name}</p>
                         </p>
                     })}
                 </div>
+                <Button
+                    className="session-button"
+                    type="button"
+                    onClick={handleClick}
+                    text="Previous"
+                >
+                </Button>
+                <Button
+                    className="session-button"
+                    type="button"
+                    onClick={handleClick}
+                    text="Next"
+                >
+                </Button>
             </div>
+
+
+
             <div className="children-container">
                 <p>Children</p>
                 <div>
@@ -97,8 +103,8 @@ function Sessions() {
                             value={childId.id}
                         >
                             {childId.name} -
-                            <img src={childId.avatar}></img> 
-                    
+                            <img src={childId.avatar}></img>
+
                         </p>
                     })}
                 </div>
