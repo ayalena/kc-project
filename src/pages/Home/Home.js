@@ -1,6 +1,7 @@
 import './Home.css';
 import PageHeader from "../../components/PageHeader/PageHeader";
 import logo from '../../assets/mock-logo.jpg';
+import { Link } from 'react-router-dom';
 
 function Home() {
     return(
@@ -35,7 +36,7 @@ function Home() {
                         quos rem sapiente sequi
                         similique sint vero?
                     </p>                    
-                    <p>To go to the sessions, click <b> here! </b></p>
+                    <p>To go to the sessions, click <Link to="/sessions"> <b> here! </b> </Link> </p>
                 </section>
             </div>
         </>

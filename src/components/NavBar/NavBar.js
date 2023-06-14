@@ -11,21 +11,23 @@ function TopMenu() {
                             <Link to="/">
                                 Home
                             </Link>                            
-                        </li>                   
+                        </li>
                         <li>
-                            Register
-                        </li>                    
+                            <Link to="/sessions">
+                                Sessions
+                            </Link>
+                        </li> 
+                        <li>
+                            <Link to="/news">
+                                News
+                            </Link>
+                        </li>                                      
                         <li>
                             Login
                         </li>                     
                         <li>
                             Profile
-                        </li>                    
-                        <li>
-                            <Link to="/sessions">
-                                Sessions
-                            </Link>
-                        </li>                   
+                        </li>                                      
                         <li>
                             Log Out
                         </li>

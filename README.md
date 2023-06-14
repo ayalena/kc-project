@@ -6,11 +6,11 @@
 - Created navigation menu
 - Created sessions page and retrieving sessions with api call to json server
 - Set up router for navigation
-
-
-
-
-
+- Update router to new version
+- Retrieve child info
+- Clickable logo
+- Added button component
+- Added news page
 
 
 
