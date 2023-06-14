@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-// import PageHeader from "../../components/PageHeader/PageHeader";
-// import logo from "../../assets/mock-logo.jpg";
+import PageHeader from "../../components/PageHeader/PageHeader";
+import logo from "../../assets/mock-logo.jpg";
 import './Sessions.css';
+import NavBar from "../../components/NavBar/NavBar";
 
 function Sessions() {
     const [isMounted, setIsMounted] = useState(false);
@@ -33,11 +34,11 @@ function Sessions() {
     }, [])
     return (
         <>
-            {/* <PageHeader icon={logo}/> */}
+            <NavBar></NavBar>
+            <PageHeader icon={logo}/>
             <div className="sessions-container">
                 <p>Sessions</p>
-            </div>
-            <div>
+                <div>
                 {fileInfo.map(fileId => {
                                         return <p
                                             key={fileId.id}
@@ -47,6 +48,8 @@ function Sessions() {
                                         </p>
                                     })}
             </div>
+            </div>
+            
         </>
     );
 }

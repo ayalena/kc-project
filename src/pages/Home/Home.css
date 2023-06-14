@@ -33,6 +33,10 @@ b:hover::after {
     width: 100%;
 }
 
+p {
+    margin: 10px;
+}
+
 
 /*tablet*/
 @media screen and (min-width: 768px) {

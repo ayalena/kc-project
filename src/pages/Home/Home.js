@@ -1,7 +1,6 @@
 import './Home.css';
 import PageHeader from "../../components/PageHeader/PageHeader";
 import logo from '../../assets/mock-logo.jpg';
-import Sessions from '../Sessions/Sessions';
 
 function Home() {
     return(
@@ -38,7 +37,6 @@ function Home() {
                     </p>                    
                     <p>To go to the sessions, click <b> here! </b></p>
                 </section>
-                <Sessions />
             </div>
         </>
     );
