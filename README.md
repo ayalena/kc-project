@@ -1,3 +1,20 @@
+# My process
+
+- I created a folder structure for assets, hooks and components, pages, context etc
+- Created a home page with some mock content
+- Created pageheader with mock logo
+- Created navigation menu
+- Created sessions page and retrieving sessions with api call to json server
+- Set up router for navigation
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -68,3 +85,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+
