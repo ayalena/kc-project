@@ -1,33 +1,51 @@
-import React from 'react';
+import { React, useState } from 'react';
 import './NewsItemForm.css';
 import { useForm } from 'react-hook-form';
 import NavBar from '../../components/NavBar/NavBar';
 import PageHeader from '../../components/PageHeader/PageHeader';
 import logo from '../../assets/mock-logo.jpg';
 import Footer from '../../components/Footer/Footer';
-import Button from '../../components/Button/Button';
+import axios from "axios";
+
 
 function NewsItemForm() {
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors }, resetField } = useForm();
+    const source = axios.CancelToken.source();
+    const [ sentSuccess, toggleSentSuccess ] = useState(false);
 
-    function onFormSubmit(data) {
-        console.log(data);
+    // if page gets unmounted, abort request
+    // useEffect(() => {
+    //     return function cleanup() {
+    //         source.cancel();
+    //     }
+    // }, []);
+
+    async function onFormSubmit(data) {
+        try {
+            const result = await axios.post("http://localhost:3001/news", {
+                title: data.title,
+                author: data.author,
+                content: data.content,
+            }, {
+                cancelToken: source.token,
+            })
+            toggleSentSuccess(true)
+            resetField("title");
+            resetField("author");
+            resetField("content");
+        } catch (e) {
+            console.error(e);
+        }
     }
 
-    function handleClick() {
-        console.log('form submitted');
-    }
-
-    // console.log('ERRORS', errors);
     return (
         <>
             <NavBar></NavBar>
-            <PageHeader icon={logo} />
+            <PageHeader icon={logo} title="New News!" />
             <main>
                 <form onSubmit={handleSubmit(onFormSubmit)}>
                     <div className="form-container">
-                        {/* <fieldset> */}
-                        <legend>Vul hier je nieuws in!</legend>
+                        <h3>Vul hier je nieuws in!</h3>
 
                         <div>
                             <label htmlFor="title"> Titel </label>
@@ -80,26 +98,20 @@ function NewsItemForm() {
                             {errors.content && <p>{errors.content.message}</p>}
                         </div>
 
-                        <div id="checkbox">
-                            <input
-                                type="checkbox"
-                                id="terms-and-conditions"
-                                {...register("terms-and-conditions")}
-                            />
-                            Ik ga akkoord met de voorwaarden
-                        </div>
-
                         <div>
-                            <Button
-                                className="add-button"
-                                type="button"
-                                onClick={handleClick}
-                                text="ADD NEW POST!"
+                            <button
+                                type="submit"
+                                className='add-button'
                             >
-                            </Button>
+                                Verstuur
+                            </button>
                         </div>
 
-                        {/* </fieldset> */}
+                        {sentSuccess && 
+                            <div>
+                                <h3>Form sent!</h3>     
+                            </div>
+                        }
                     </div>
                 </form>
             </main>

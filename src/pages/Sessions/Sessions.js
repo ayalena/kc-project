@@ -68,13 +68,13 @@ function Sessions() {
                 <h3>Sessions</h3>
                 <div>
                     {sessionInfo.map(sessionId => {
-                        return <p
+                        return <div
                             key={sessionId.id}
                             value={sessionId.id}
                         >
                             <p>{sessionId.day}: {sessionId.start_time} - {sessionId.end_time}</p>
-                            <p>{sessionId.product_name}</p>
-                        </p>
+                            <p> {sessionId.product_name}</p>
+                        </div>
                     })}
                 </div>
                 <Button
@@ -99,14 +99,14 @@ function Sessions() {
                 <h3>Children</h3>
                 <div>
                     {childInfo.map(childId => {
-                        return <p
+                        return <div
                             key={childId.id}
                             value={childId.id}
                         >
-                            <p>{childId.name} </p>
+                            <p>{childId.name}</p>                        
                             <img src={childId.avatar}></img>
 
-                        </p>
+                        </div>
                     })}
                 </div>
             </div>

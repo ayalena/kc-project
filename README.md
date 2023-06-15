@@ -15,6 +15,8 @@
 
 - Created Form page
 - Created Footer component
+- Set up React From Hooks
+- Set up news posting method to backend server
 
 
 
