@@ -17,6 +17,8 @@
 - Created Footer component
 - Set up React From Hooks
 - Set up news posting method to backend server
+- Styling sessions overview
+- Creating hooks/helpers to manipulate sessions data
 
 
 

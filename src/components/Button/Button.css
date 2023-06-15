@@ -71,6 +71,11 @@ button:hover {
     border-radius: 4px;
     margin: 50px;
   }
+  
+.presence-button, .group-button {
+    margin: 5px;
+    background-color: #8e0000;
+}
 
 /*tablet*/
 @media screen and (min-width: 768px) {
