@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Sessions from './pages/Sessions/Sessions';
 import News from './pages/News/News';
+import NewsItemForm from './pages/NewsItemForm/NewsItemForm';
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
   {
     path: "news",
     element: <News />,
+  },
+  {
+    path: "form",
+    element: <NewsItemForm />,
   }
 ]);
 

@@ -4,6 +4,9 @@ import PageHeader from "../../components/PageHeader/PageHeader";
 import logo from "../../assets/mock-logo.jpg";
 import './News.css';
 import NavBar from "../../components/NavBar/NavBar";
+import Button from "../../components/Button/Button";
+import { useNavigate } from "react-router-dom";
+import Footer from "../../components/Footer/Footer";
 
 function News() {
     const [isMounted, setIsMounted] = useState(false);
@@ -11,6 +14,12 @@ function News() {
     // news
     const [newsInfo, setNewsInfo] = useState([]);
     const [currentNewsnInfo, setCurrentNewsInfo] = useState([])
+
+    const navigate = useNavigate ();
+
+    function handleClick() {
+        navigate("/form");
+    }
  
     // getting the news
     useEffect(() => {
@@ -52,7 +61,17 @@ function News() {
                         </p>
                     })}
                 </div>
-            </div>        
+            </div>
+
+            <Button
+                    className="news-button"
+                    type="button"
+                    onClick={handleClick}
+                    text="ADD NEW POST!"
+                >
+            </Button>   
+
+            <Footer />     
         </>
     );
 }

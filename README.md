@@ -11,6 +11,10 @@
 - Clickable logo
 - Added button component
 - Added news page
+- Added buttons to pages
+
+- Created Form page
+- Created Footer component
 
 
 

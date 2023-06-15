@@ -20,7 +20,7 @@
 }
 
 .session-button {
-    background-color: #86eadc;
+    background-color: #8e0000;
     margin: 15px;
     border-radius: 10px;
     font-size: 12px;
@@ -34,10 +34,55 @@
     height: 35px;
 }
 
+.news-button {
+    background-color: #8e0000;
+    margin: 15px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    width: 200px;
+    height: 30px;
+    color: white;
+    margin-left: 150px;
+}
+
+.news-button:hover {
+    width: 205px;
+    height: 35px;
+}
+
+.add-button {
+    background-color: #86eadc;
+    margin: 15px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    width: 200px;
+    height: 30px;
+    color: black;
+}
+
+.add-button:hover {
+    width: 205px;
+    height: 35px;
+}
+
 /*tablet*/
 @media screen and (min-width: 768px) {
 
     .round-button {
         margin-right: 0px;
     }
+    .news-button {
+        margin-left: 350px;
+    }
+}
+
+/*laptop*/
+@media screen and (min-width: 992px) {
+
+    .news-button {
+        margin-left: 600px;
+    }
+
 }

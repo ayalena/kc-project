@@ -3,6 +3,7 @@ import PageHeader from "../../components/PageHeader/PageHeader";
 import logo from '../../assets/mock-logo.jpg';
 import { Link, useNavigate  } from 'react-router-dom';
 import Button from '../../components/Button/Button';
+import Footer from '../../components/Footer/Footer';
 
 function Home() {
     const navigate = useNavigate ();
@@ -52,6 +53,7 @@ function Home() {
                     </Button>
                 </section>
             </div>
+            <Footer />
         </>
     );
 }

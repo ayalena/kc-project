@@ -5,6 +5,7 @@ import logo from "../../assets/mock-logo.jpg";
 import './Sessions.css';
 import NavBar from "../../components/NavBar/NavBar";
 import Button from "../../components/Button/Button";
+import Footer from "../../components/Footer/Footer";
 
 function Sessions() {
     const [isMounted, setIsMounted] = useState(false);
@@ -64,7 +65,7 @@ function Sessions() {
             <NavBar></NavBar>
             <PageHeader icon={logo} />
             <div className="sessions-container">
-                <p>Sessions</p>
+                <h3>Sessions</h3>
                 <div>
                     {sessionInfo.map(sessionId => {
                         return <p
@@ -95,21 +96,21 @@ function Sessions() {
 
 
             <div className="children-container">
-                <p>Children</p>
+                <h3>Children</h3>
                 <div>
                     {childInfo.map(childId => {
                         return <p
                             key={childId.id}
                             value={childId.id}
                         >
-                            {childId.name} -
+                            <p>{childId.name} </p>
                             <img src={childId.avatar}></img>
 
                         </p>
                     })}
                 </div>
             </div>
-
+            <Footer />
         </>
     );
 }

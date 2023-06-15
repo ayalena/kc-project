@@ -1,4 +1,4 @@
-.sessions-container {
+.sessions-container, .children-container {
     width: 90%;
     margin: 60px auto;
     text-align: center;
