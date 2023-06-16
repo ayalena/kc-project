@@ -7,13 +7,12 @@ import NavBar from "../../components/NavBar/NavBar";
 import Button from "../../components/Button/Button";
 import { useNavigate } from "react-router-dom";
 import Footer from "../../components/Footer/Footer";
+import NewsItem from "../../components/NewsItem/NewsItem";
 
 function News() {
     const [isMounted, setIsMounted] = useState(false);
     const [fileLoading, toggleFileLoading] = useState(false);
-    // news
     const [newsInfo, setNewsInfo] = useState([]);
-    const [currentNewsnInfo, setCurrentNewsInfo] = useState([])
 
     const navigate = useNavigate ();
 
@@ -21,7 +20,6 @@ function News() {
         navigate("/form");
     }
  
-    // getting the news
     useEffect(() => {
         setIsMounted(true);
         async function getNewsData() {
@@ -29,7 +27,6 @@ function News() {
             try {
                 const result = await axios("http://localhost:3001/news")
                 setNewsInfo(result.data);
-                setCurrentNewsInfo(result.data[0]);
             } catch (e) {
                 console.error(e)
             }
@@ -44,25 +41,20 @@ function News() {
     return (
         <>
             <NavBar></NavBar>
-            <PageHeader icon={logo} />
-          
+            <PageHeader icon={logo} />          
             <div className="news-container">
-                <h1>News!</h1>
-                <div>
-                    {newsInfo.map(newsId => {
-                        return <p
-                            key={newsId.id}
-                            value={newsId.id}
-                        >
-                           <h2> {newsId.title}</h2>
-                           <h3> {newsId.author} </h3>
-                           <p> {newsId.content} </p>
-
-                        </p>
-                    })}
+                <h1>News!</h1>               
+                <div className="newsItems-container">
+                    {newsInfo.map(newsId => (                       
+                           <NewsItem 
+                                key={newsId.id} 
+                                title={newsId.title} 
+                                author={newsId.author} 
+                                content={newsId.content}>
+                            </NewsItem>                        
+                    ))}
                 </div>
             </div>
-
             <Button
                     className="news-button"
                     type="button"
@@ -70,7 +62,6 @@ function News() {
                     text="ADD NEW POST!"
                 >
             </Button>   
-
             <Footer />     
         </>
     );

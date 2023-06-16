@@ -9,7 +9,6 @@ import Button from "../../components/Button/Button";
 import Footer from "../../components/Footer/Footer";
 import sortOnDate from "../../Helper/SortSessions";
 import Session from "../../components/Session/Session";
-import useSortableData from "../../Hooks/useSortableData";
 
 function Sessions() {
     const [isMounted, setIsMounted] = useState(false);
@@ -22,8 +21,6 @@ function Sessions() {
     const [currentChildInfo, setCurrentChildInfo] = useState([])
 
     const [presenceInfo, setPresenceInfo] = useState(sessionInfo.presence);
-
-    const { items, requestSort, sortConfig } = useSortableData(sessionInfo);
 
     const [filteredDays, setFilteredDays] = useState();
     const [filteredGroups, setFilteredGroups] = useState();

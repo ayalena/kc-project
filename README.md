@@ -18,7 +18,9 @@
 - Set up React From Hooks
 - Set up news posting method to backend server
 - Styling sessions overview
-- Creating hooks/helpers to manipulate sessions data
+- Manipulate sessions data with buttons and methods
+
+- News item component & news page cleanup
 
 
 
