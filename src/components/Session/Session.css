@@ -1,0 +1,50 @@
+.session-container {
+    width: 800px; 
+    margin: 50px;
+    padding: 50px;
+    border: 2px solid black;
+    display: grid; 
+    grid-template-columns:  repeat(3, 1fr);  
+    grid-template-rows: repeat(2,60px); 
+    background-color: beige; 
+    gap: 10px; 
+    grid-template-areas: 'date date date' 
+                         'time time time' 
+                         'avatar name name' 
+                         'avatar group group' 
+                         'presence presence presence'; 
+  }
+  .session-container > div { 
+    background-color: rgb(250, 206, 118);
+    font-size: 40px;
+    font-family:'Courier New', Courier, monospace; 
+  }  
+  .flex-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  } 
+  #one { 
+    grid-area: date;
+    
+  } 
+  #two { 
+   grid-area: time; 
+
+   
+  }
+  #three { 
+    grid-area: avatar; 
+    padding: 20px;
+    margin-left: inherit;
+    
+  }     
+  #four { 
+    grid-area: name; 
+  } 
+  #five { 
+    grid-area: group; 
+  }    
+  #six { 
+    grid-area: presence; 
+  }

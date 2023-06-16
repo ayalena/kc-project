@@ -7,64 +7,55 @@ import './Sessions.css';
 import NavBar from "../../components/NavBar/NavBar";
 import Button from "../../components/Button/Button";
 import Footer from "../../components/Footer/Footer";
-import sortOnDate from "../../Helper/SortSessions";
 import Session from "../../components/Session/Session";
 
 function Sessions() {
     const [isMounted, setIsMounted] = useState(false);
     const [fileLoading, toggleFileLoading] = useState(false);
-    // sessions & sessionsId
+    const [searchInput, setSearchInput] = useState("");
+
     const [sessionInfo, setSessionInfo] = useState([]);
-    const [currentSessionInfo, setCurrentSessionInfo] = useState([])
-    // children & childrenId
     const [childInfo, setChildInfo] = useState([]);
-    const [currentChildInfo, setCurrentChildInfo] = useState([])
 
     const [presenceInfo, setPresenceInfo] = useState(sessionInfo.presence);
 
     const [filteredDays, setFilteredDays] = useState();
     const [filteredGroups, setFilteredGroups] = useState();
 
+    // button handlings
     function handleClick() {
         console.log('clicked');
     }
+
     function handleDateSorting() {
-        console.log(sessionInfo);
-        const desiredDate = "2023-05-31";
+        const desiredDate = searchInput;
         const filteredData = sessionInfo.filter(item => item.day === desiredDate);
-        console.log(filteredData);
-        setFilteredDays(filteredData);
+        // merge corresponding childs data with filtered data
+        const enrichedData = filteredData.map(item => {
+            const child = childInfo.find(childItem => childItem.id === item.child_id);
+            return { ...item, avatar: child?.avatar, child_name: child?.name };
+        });
+        setFilteredDays(enrichedData);
+        console.log(enrichedData);
     }
 
-    // const getClassNamesFor = (name) => {
-    //     if (!sortConfig) return;
-    //     return sortConfig.key === name ? sortConfig.direction : undefined;
+    // function handlePresence() {
+    //     console.log(sessionInfo);
     // }
 
-    function handlePresence() {
-        const presenceInfo = sessionInfo.filter((session, id) => (
-            console.log(session.presence, id)
-        ));
-        setPresenceInfo(presenceInfo);
-        if (presenceInfo === 'unkown') {
-            setPresenceInfo('present');
-        } else {
-            console.log('nothing to see here')
-        }
-        // else if(sessionInfo.presence === 'present' || presenceInfo === 'present' ) {
-        //     setPresenceInfo('picked up');
-        // } else if(sessionInfo.presence === 'picked up' || presenceInfo === 'picked up') {
-        //     setPresenceInfo('unknown');
-        // }
-    }
+    // function handleGroupSort() {
+    //     console.log(sessionInfo);
+    //     const desiredGroup = "Group 1";
+    //     const filteredData = sessionInfo.filter(item => item.group.name === desiredGroup);
+    //     console.log(filteredData);
+    //     setFilteredGroups(filteredData);
 
-    function handleGroupSort() {
-        console.log(sessionInfo);
-        const desiredGroup = "Group 1";
-        const filteredData = sessionInfo.filter(item => item.group.name === desiredGroup);
-        console.log(filteredData);
-        setFilteredGroups(filteredData);
-    }
+    // }
+
+    const handleDateChange = (e) => {
+        e.preventDefault();
+        setSearchInput(e.target.value);
+    };
 
     // getting the sessions
     useEffect(() => {
@@ -74,7 +65,6 @@ function Sessions() {
             try {
                 const result = await axios("http://localhost:3001/sessions")
                 setSessionInfo(result.data);
-                setCurrentSessionInfo(result.data[0]);
 
             } catch (e) {
                 console.error(e)
@@ -95,7 +85,6 @@ function Sessions() {
             try {
                 const result = await axios("http://localhost:3001/children")
                 setChildInfo(result.data);
-                setCurrentChildInfo(result.data[0]);
             } catch (e) {
                 console.error(e)
             }
@@ -113,6 +102,14 @@ function Sessions() {
             <PageHeader icon={logo} />
             <div className="sessions-container">
                 <h3>Sessions</h3>
+                <input
+                    type="date"
+                    placeholder="2023-06-02"
+                    onChange={handleDateChange}
+                    value={searchInput}
+                    min="2023-05-31"
+                    max="2023-06-03"
+                />
                 <Button
                     className="session-button"
                     type="button"
@@ -121,137 +118,78 @@ function Sessions() {
                 >
                 </Button>
 
-                {filteredDays &&                
+                {filteredDays &&
                     filteredDays.map((filteredDay) => (
-                        <Session date={filteredDay.day}></Session>
-                    ))                
+                        <Session
+                            key={filteredDay.id}
+                            date={filteredDay.day}
+                            start={filteredDay.start_time}
+                            end={filteredDay.end_time}
+                            duration={filteredDay.product_name}
+                            name={filteredDay.child_name}
+                            group={filteredDay.group.name}
+                            presence={filteredDay.presence}
+                            avatar={filteredDay.avatar}
+                        >
+                        </Session>
+                    ))
+
                 }
 
-
-
-                <div className="table-container">
-                    <div className="table-content">
-                        <table>
-                            <tbody>
-                                <tr>
-                                    <th>Date</th>
-                                    <th>Start</th>
-                                    <th>End</th>
-                                    <th>Duration</th>
-                                    <th>Name</th>
-                                    <th>Presence</th>
-                                    <th>Avatar</th>
-                                    <th>
-                                        Group
-                                        <Button
-                                            className="group-button"
-                                            type="button"
-                                            onClick={handleGroupSort}
-                                            text="Sort"
-                                        >
-                                        </Button>
-                                    </th>
-                                </tr>
-                                {sessionInfo.map((session) => (
-                                    <tr
-                                        key={session.id}
-                                    >
-                                        <td>
-                                            {session.day}
-                                        </td>
-                                        <td>
-                                            {session.start_time}
-                                        </td>
-                                        <td>
-                                            {session.end_time}
-                                        </td>
-                                        <td>
-                                            {session.product_name}
-                                        </td>
-                                        <td>
-                                            {session.child_id}
-                                        </td>
-                                        <td>
-                                            {!presenceInfo ?
-                                                <>{session.presence}
-                                                    {/* <Button
-                                                        className="presence-button"
-                                                        type="button"
-                                                        onClick={handlePresence}
-                                                        text="Change"
-                                                    >
-                                                    </Button> */}
-                                                </>
-
-                                                :
-                                                <>{presenceInfo}
-                                                    {/* <Button
-                                                        className="presence-button"
-                                                        type="button"
-                                                        onClick={handlePresence}
-                                                        text="Change"
-                                                    >
-                                                    </Button> */}
-                                                </>
-                                            }
-                                            {/* {presenceInfo} */}
-                                            {/* {session.presence} */}
-                                            <Button
-                                                className="presence-button"
-                                                type="button"
-                                                onClick={handlePresence}
-                                                text="Change"
+                {!filteredDays &&
+                    <div>
+                        <div className="table-container">
+                            <div className="table-content">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Start</th>
+                                            <th>End</th>
+                                        </tr>
+                                        {sessionInfo.map((session) => (
+                                            <tr
+                                                key={session.id}
                                             >
-                                            </Button>
-
-                                        </td>
-                                        <td>
-
-                                        </td>
-                                        <td>
-                                            {session.group.name}
-                                        </td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-
-
-                <Button
-                    className="session-button"
-                    type="button"
-                    onClick={handleClick}
-                    text="Previous"
-                >
-                </Button>
-                <Button
-                    className="session-button"
-                    type="button"
-                    onClick={handleClick}
-                    text="Next"
-                >
-                </Button>
-            </div>
-
-
-
-            <div className="children-container">
-                <h3>Children</h3>
-                <div>
-                    {childInfo.map(childId => {
-                        return <div
-                            key={childId.id}
-                            value={childId.id}
-                        >
-                            <p>{childId.name}</p>
-                            <img src={childId.avatar}></img>
-
+                                                <td>
+                                                    {session.day}
+                                                </td>
+                                                <td>
+                                                    {session.start_time}
+                                                </td>
+                                                <td>
+                                                    {session.end_time}
+                                                </td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                    })}
-                </div>
+                    </div>
+                }
+
+                {filteredDays &&
+                    <div>
+                        <Button
+                            className="session-button"
+                            type="button"
+                            onClick={handleClick}
+                            text="Previous"
+                        >
+                        </Button>
+                        <Button
+                            className="session-button"
+                            type="button"
+                            onClick={handleClick}
+                            text="Next"
+                        >
+                        </Button>
+
+                    </div>
+
+                }
+
             </div>
             <Footer />
         </>

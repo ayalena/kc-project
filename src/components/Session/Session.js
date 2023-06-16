@@ -1,18 +1,19 @@
-// when someone clicks a data render the x number of sessions under that date
+import './Session.css';
 
 function Session({ date, start, end, duration, name, group, presence, avatar }) {
     return (
         <>
+        <div className='flex-container'>
             <div className="session-container">
-                <p>{date}</p>
-                <p>{start}</p>
-                <p>{end}</p>
-                <p>{duration}</p>
-                <p>{name}</p>
-                <p>{group}</p>
-                <p>{presence}</p>
-                <p>{avatar}</p>
+                <div id="one">Date:  {date}</div>
+                <div  id="two">{start} - {end} : {duration}</div >
+                <img src={avatar} alt="avatar" id="three"></img>
+                <div  id="four">Name:  {name}</div >
+                <div  id="five">{group}</div >
+                <div  id="six">{presence}</div >
             </div>
+        </div>
+            
         </>
     )
 }

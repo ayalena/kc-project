@@ -21,6 +21,7 @@
 - Manipulate sessions data with buttons and methods
 
 - News item component & news page cleanup
+- Session component update & session page cleanup
 
 
 
