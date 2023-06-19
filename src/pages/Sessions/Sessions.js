@@ -13,12 +13,9 @@ function Sessions() {
     const [isMounted, setIsMounted] = useState(false);
     const [searchInput, setSearchInput] = useState("2023-06-02");
     const [groupInput, setGroupInput] = useState("Group 1");
-
     const [sessionInfo, setSessionInfo] = useState([]);
     const [childInfo, setChildInfo] = useState([]);
-
     const [filteredDays, setFilteredDays] = useState();
-
     const [selectedValue, setSelectedValue] = useState('Group 1');
 
     // button handlings
@@ -70,7 +67,11 @@ function Sessions() {
     };
 
     useEffect(() => {
-        handleDateSorting();
+        if(isMounted) {
+            handleDateSorting();
+        } else {
+            setIsMounted(true)
+        }        
     }, [searchInput]);
 
     // getting the sessions
@@ -150,7 +151,7 @@ function Sessions() {
                 </div>
 
 
-                {!searchInput &&
+                {!filteredDays &&
                     <div>
                         <div className="table-container">
                             <div className="table-content">
@@ -182,7 +183,6 @@ function Sessions() {
                         </div>
                     </div>
                 }
-
 
                 {filteredDays &&
                     <div>
