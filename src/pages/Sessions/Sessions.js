@@ -8,22 +8,32 @@ import NavBar from "../../components/NavBar/NavBar";
 import Footer from "../../components/Footer/Footer";
 import Session from "../../components/Session/Session";
 import Button from '@mui/material/Button';
+import { Select, MenuItem, OutlinedInput, InputLabel } from "@mui/material";
 
 const style = {
     padding: 3,
     margin: 10,
     color: 'white',
     backgroundColor: ' #8e0000',
-  };
+};
 
-  const navStyle = {
+const navStyle = {
     padding: 10,
     margin: 5,
     width: 200,
     marginTop: 30,
     backgroundColor: '#fa5f5f'
-  }
-  
+}
+
+const groupStyle = {
+    padding: 3,
+    margin: 10,
+    backgroundColor: 'white',
+    width: 150,
+    height: 30,
+    color: "black"
+};
+
 
 function Sessions() {
     const [isMounted, setIsMounted] = useState(false);
@@ -81,11 +91,11 @@ function Sessions() {
     };
 
     useEffect(() => {
-        if(isMounted) {
+        if (isMounted) {
             handleDateSorting();
         } else {
             setIsMounted(true)
-        }        
+        }
     }, [searchInput]);
 
     // getting the sessions
@@ -131,6 +141,7 @@ function Sessions() {
                 <h3>Sessions</h3>
                 <div className="sorting-container">
                     <div className="sortdate-container">
+                        <InputLabel>Sort Date</InputLabel>
                         <input
                             type="date"
                             placeholder="2023-06-02"
@@ -143,29 +154,39 @@ function Sessions() {
                             variant="contained"
                             onClick={handleDateSorting}
                             label="Primary"
-                            primary={true}
-                            style={style}                       
+                            primary="true"
+                            style={style}
                         >
                             Sort
                         </Button>
                     </div>
                     <div className="sortgroup-container">
-                        <select onChange={(e) => { setSelectedValue(e.target.value) }}>
-                            <option value="Group 1" onChange={handleGroupChange}> Group 1</option>
-                            <option value="Group 2" onChange={handleGroupChange}> Group 2</option>
-                            <option value="Group 3" onChange={handleGroupChange}> Group 3</option>
-                            <option value="Group 4" onChange={handleGroupChange}> Group 4</option>
-                        </select>
+                        <InputLabel>Sort Group</InputLabel>
+                        <Select
+                            value={groupInput.name}
+                            label="Group"
+                            onChange={(e) => { setSelectedValue(e.target.value) }}
+                            style={groupStyle}
+                            defaultValue="Group 1"
+
+                        >
+                            <MenuItem value="Group 1">Group 1</MenuItem>
+                            <MenuItem value="Group 2">Group 2</MenuItem>
+                            <MenuItem value="Group 3">Group 3</MenuItem>
+                            <MenuItem value="Group 4">Group 4</MenuItem>
+
+                        </Select>
                         <Button
-                             variant="contained"
-                             onClick={handleDateSorting}
-                             label="Primary"
-                             primary={true}
-                             style={style}  
+                            variant="contained"
+                            onClick={handleGroupSorting}
+                            label="Primary"
+                            primary="true"
+                            style={style}
                         >
                             Sort
                         </Button>
                     </div>
+
                 </div>
 
 
@@ -205,20 +226,20 @@ function Sessions() {
                 {filteredDays &&
                     <div>
                         <Button
-                         variant="contained"
-                         onClick={handlePreviousDate}
-                         label="Primary"
-                         primary={true}
-                         style={navStyle}
+                            variant="contained"
+                            onClick={handlePreviousDate}
+                            label="Primary"
+                            primary="true"
+                            style={navStyle}
                         >
                             Previous
                         </Button>
                         <Button
-                        variant="contained"
-                        onClick={handleNextDate}
-                        label="Primary"
-                        primary={true}
-                        style={navStyle}
+                            variant="contained"
+                            onClick={handleNextDate}
+                            label="Primary"
+                            primary="true"
+                            style={navStyle}
                         >
                             Next
                         </Button>

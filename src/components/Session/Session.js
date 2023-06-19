@@ -40,7 +40,7 @@ function Session({ date, start, end, duration, name, group, presence, avatar }) 
                             variant="contained"
                             onClick={handlePresence}
                             label="Primary"
-                            primary={true}
+                            primary="true"
                             style={style}  
                         >
                             Change Status

@@ -61,7 +61,7 @@ function Home() {
                             variant="contained"
                             onClick={handleClick}
                             label="Primary"
-                            primary={true}
+                            primary="true"
                             style={style}
                             className='round-button'
                         >

@@ -67,7 +67,7 @@ function News() {
                     variant="contained"
                             onClick={handleClick}
                             label="Primary"
-                            primary={true}
+                            primary="true"
                             style={style}
                 >
                     Add new post!
