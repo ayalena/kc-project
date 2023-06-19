@@ -16,21 +16,21 @@
   }
   .session-container > div { 
     background-color: rgb(250, 206, 118);
-    font-size: 40px;
-    font-family:'Courier New', Courier, monospace; 
-  }  
-  .flex-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    font-size: 30px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
   } 
   #one { 
     grid-area: date;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     
   } 
   #two { 
    grid-area: time; 
-
+   display: flex;
+   align-items: center;
+   justify-content: center;
    
   }
   #three { 
@@ -41,10 +41,24 @@
   }     
   #four { 
     grid-area: name; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
   } 
   #five { 
-    grid-area: group; 
+    grid-area: group;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
   }    
   #six { 
     grid-area: presence; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .flex-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }

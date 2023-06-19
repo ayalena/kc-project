@@ -1,6 +1,12 @@
 import './Session.css';
-import Button from '../Button/Button';
 import { useState } from 'react';
+import Button from '@mui/material/Button';
+
+const style = {
+    padding: 12,
+    color: 'white',
+    backgroundColor: ' #8e0000',
+  };
 
 function Session({ date, start, end, duration, name, group, presence, avatar }) {
     const [presenceInfo, setPresenceInfo] = useState(presence)
@@ -31,11 +37,13 @@ function Session({ date, start, end, duration, name, group, presence, avatar }) 
 
                         }
                         <Button
-                            className="session-button"
-                            type="button"
+                            variant="contained"
                             onClick={handlePresence}
-                            text="Change"
+                            label="Primary"
+                            primary={true}
+                            style={style}  
                         >
+                            Change Status
                         </Button>
                     </div >
                 </div>

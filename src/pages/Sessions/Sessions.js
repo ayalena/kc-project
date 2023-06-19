@@ -5,9 +5,25 @@ import PageHeader from "../../components/PageHeader/PageHeader";
 import logo from "../../assets/mock-logo.jpg";
 import './Sessions.css';
 import NavBar from "../../components/NavBar/NavBar";
-import Button from "../../components/Button/Button";
 import Footer from "../../components/Footer/Footer";
 import Session from "../../components/Session/Session";
+import Button from '@mui/material/Button';
+
+const style = {
+    padding: 3,
+    margin: 10,
+    color: 'white',
+    backgroundColor: ' #8e0000',
+  };
+
+  const navStyle = {
+    padding: 10,
+    margin: 5,
+    width: 200,
+    marginTop: 30,
+    backgroundColor: '#fa5f5f'
+  }
+  
 
 function Sessions() {
     const [isMounted, setIsMounted] = useState(false);
@@ -36,14 +52,12 @@ function Sessions() {
     };
 
     function handleGroupSorting() {
-        console.log(sessionInfo);
         const desiredGroup = selectedValue;
         const filteredData = sessionInfo.filter(item => item.group.name === desiredGroup);
         const enrichedData = filteredData.map(item => {
             const child = childInfo.find(childItem => childItem.id === item.child_id);
             return { ...item, avatar: child?.avatar, child_name: child?.name };
         });
-        console.log(enrichedData);
         setFilteredDays(enrichedData);
     }
 
@@ -126,11 +140,13 @@ function Sessions() {
                             max="2023-06-03"
                         />
                         <Button
-                            className="sort-button"
-                            type="button"
+                            variant="contained"
                             onClick={handleDateSorting}
-                            text="Sort"
+                            label="Primary"
+                            primary={true}
+                            style={style}                       
                         >
+                            Sort
                         </Button>
                     </div>
                     <div className="sortgroup-container">
@@ -141,11 +157,13 @@ function Sessions() {
                             <option value="Group 4" onChange={handleGroupChange}> Group 4</option>
                         </select>
                         <Button
-                            className="sort-button"
-                            type="button"
-                            onClick={handleGroupSorting}
-                            text="Sort"
+                             variant="contained"
+                             onClick={handleDateSorting}
+                             label="Primary"
+                             primary={true}
+                             style={style}  
                         >
+                            Sort
                         </Button>
                     </div>
                 </div>
@@ -187,18 +205,22 @@ function Sessions() {
                 {filteredDays &&
                     <div>
                         <Button
-                            className="session-button"
-                            type="button"
-                            onClick={handlePreviousDate}
-                            text="Previous"
+                         variant="contained"
+                         onClick={handlePreviousDate}
+                         label="Primary"
+                         primary={true}
+                         style={navStyle}
                         >
+                            Previous
                         </Button>
                         <Button
-                            className="session-button"
-                            type="button"
-                            onClick={handleNextDate}
-                            text="Next"
+                        variant="contained"
+                        onClick={handleNextDate}
+                        label="Primary"
+                        primary={true}
+                        style={navStyle}
                         >
+                            Next
                         </Button>
 
                     </div>

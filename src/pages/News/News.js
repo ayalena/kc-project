@@ -4,10 +4,18 @@ import PageHeader from "../../components/PageHeader/PageHeader";
 import logo from "../../assets/mock-logo.jpg";
 import './News.css';
 import NavBar from "../../components/NavBar/NavBar";
-import Button from "../../components/Button/Button";
 import { useNavigate } from "react-router-dom";
 import Footer from "../../components/Footer/Footer";
 import NewsItem from "../../components/NewsItem/NewsItem";
+import Button from '@mui/material/Button';
+
+const style = {
+    padding: 10,
+    margin: 5,
+    width: 200,
+    marginTop: 30,
+    backgroundColor: '#fa5f5f'
+  }
 
 function News() {
     const [isMounted, setIsMounted] = useState(false);
@@ -54,14 +62,18 @@ function News() {
                             </NewsItem>                        
                     ))}
                 </div>
-            </div>
-            <Button
-                    className="news-button"
-                    type="button"
-                    onClick={handleClick}
-                    text="ADD NEW POST!"
+                <Button
+                    
+                    variant="contained"
+                            onClick={handleClick}
+                            label="Primary"
+                            primary={true}
+                            style={style}
                 >
-            </Button>   
+                    Add new post!
+            </Button>  
+            </div>
+             
             <Footer />     
         </>
     );

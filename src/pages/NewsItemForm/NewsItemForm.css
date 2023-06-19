@@ -34,4 +34,15 @@ textarea {
 form > div {
   text-align: center;
 }
+
+button {
+  background-color: #8e0000;
+    margin: 15px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    width: 200px;
+    height: 30px;
+    color: white;  
+}
  

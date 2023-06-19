@@ -37,6 +37,12 @@ p {
     margin: 10px;
 }
 
+.round-button:hover {
+    width: 70px !important;
+    height: 70px !important;
+    transform: rotate(15deg) !important; 
+}
+
 
 /*tablet*/
 @media screen and (min-width: 768px) {

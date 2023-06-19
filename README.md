@@ -27,9 +27,8 @@
 
 - Handling previous and next date updates with useEffect
 - Handling group sorting
-
-
-
+- Fix first render overview sessions
+- Replaced Custom Button component with MUI Button component
 
 
 # Getting Started with Create React App

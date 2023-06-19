@@ -1,19 +1,31 @@
 import './Home.css';
 import PageHeader from "../../components/PageHeader/PageHeader";
 import logo from '../../assets/mock-logo.jpg';
-import { Link, useNavigate  } from 'react-router-dom';
-import Button from '../../components/Button/Button';
+import { Link, useNavigate } from 'react-router-dom';
 import Footer from '../../components/Footer/Footer';
+import Button from '@mui/material/Button';
+
+const style = {
+    padding: 3,
+    margin: 10,
+    color: 'white',
+    backgroundColor: ' #8e0000',
+    borderRadius: 50,
+    width: 60,
+    height: 60,
+    transform: 'rotate(12deg)',
+    transition: 'transform 1s ease-in-out',
+};
 
 function Home() {
-    const navigate = useNavigate ();
+    const navigate = useNavigate();
 
     function handleClick() {
         navigate("/news");
     }
-    return(
+    return (
         <>
-        <PageHeader icon={logo} title="Welcome to KidsKonnect!"/>
+            <PageHeader icon={logo} title="Welcome to KidsKonnect!" />
             <div className="page-container">
                 <section className="section">
                     <p>Welcome to KidsKonnect! On this page you can access the sessions.</p>
@@ -42,15 +54,20 @@ function Home() {
                         quisquam
                         quos rem sapiente sequi
                         similique sint vero?
-                    </p>                    
+                    </p>
                     <p>To go to the sessions, click <Link to="/sessions"> <b> here! </b> </Link> </p>
-                    <Button
-                        className="round-button"
-                        type="button"
-                        onClick={handleClick}
-                        text="NEWS!"
-                    >
-                    </Button>
+                    
+                        <Button
+                            variant="contained"
+                            onClick={handleClick}
+                            label="Primary"
+                            primary={true}
+                            style={style}
+                            className='round-button'
+                        >
+                            News!
+                        </Button>
+                   
                 </section>
             </div>
             <Footer />

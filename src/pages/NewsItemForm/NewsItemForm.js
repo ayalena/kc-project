@@ -7,7 +7,6 @@ import logo from '../../assets/mock-logo.jpg';
 import Footer from '../../components/Footer/Footer';
 import axios from "axios";
 
-
 function NewsItemForm() {
     const { register, handleSubmit, formState: { errors }, resetField } = useForm();
     const source = axios.CancelToken.source();
@@ -101,7 +100,6 @@ function NewsItemForm() {
                         <div>
                             <button
                                 type="submit"
-                                className='add-button'
                             >
                                 Verstuur
                             </button>
