@@ -1,8 +1,11 @@
-import React from "react";
+import {useState} from "react";
 import './NavBar.css';
 import { Link } from "react-router-dom";
 
 function TopMenu() {
+     // i would usually put authorisation in context 
+     const [isLoggedIn, setIsLoggedIn] = useState(true);
+
        return (
         <>
             <div className="nav-container">
@@ -21,10 +24,12 @@ function TopMenu() {
                             <Link to="/news">
                                 News
                             </Link>
-                        </li>                                      
-                        <li>
-                            Login
-                        </li>                     
+                        </li> 
+                        {!isLoggedIn &&
+                            <li>
+                                Login
+                            </li> 
+                        }                                                   
                         <li>
                             Profile
                         </li>                                      

@@ -22,6 +22,12 @@
 
 - News item component & news page cleanup
 - Session component update & session page cleanup
+- Handling previous and next date (in progress)
+- Presence handling in session component
+
+- Handling previous and next date updates with useEffect
+- Handling group sorting
+
 
 
 

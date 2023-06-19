@@ -77,6 +77,18 @@ button:hover {
     background-color: #8e0000;
 }
 
+.sort-button {
+    background-color: #8e0000;
+    margin: 5px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    width: 100px;
+    height: 30px;
+    color: white;
+    margin-left: 15px;
+}
+
 /*tablet*/
 @media screen and (min-width: 768px) {
 
