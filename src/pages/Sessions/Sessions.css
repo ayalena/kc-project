@@ -32,4 +32,15 @@
 
   .sorting-container {
     margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  input {
+    padding: 5px;
+  }
+
+  .sortgroup-container {
+    margin-left: 25px;
   }

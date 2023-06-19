@@ -8,16 +8,16 @@ import NavBar from "../../components/NavBar/NavBar";
 import Footer from "../../components/Footer/Footer";
 import Session from "../../components/Session/Session";
 import Button from '@mui/material/Button';
-import { Select, MenuItem, OutlinedInput, InputLabel } from "@mui/material";
+import { Select, MenuItem, InputLabel } from "@mui/material";
 
-const style = {
+const sortButtonStyle = {
     padding: 3,
-    margin: 10,
+    margin: 20,
     color: 'white',
     backgroundColor: ' #8e0000',
 };
 
-const navStyle = {
+const navButtonStyle = {
     padding: 10,
     margin: 5,
     width: 200,
@@ -25,15 +25,13 @@ const navStyle = {
     backgroundColor: '#fa5f5f'
 }
 
-const groupStyle = {
+const groupSelectStyle = {
     padding: 3,
-    margin: 10,
     backgroundColor: 'white',
-    width: 150,
+    width: 120,
     height: 30,
     color: "black"
 };
-
 
 function Sessions() {
     const [isMounted, setIsMounted] = useState(false);
@@ -141,7 +139,7 @@ function Sessions() {
                 <h3>Sessions</h3>
                 <div className="sorting-container">
                     <div className="sortdate-container">
-                        <InputLabel>Sort Date</InputLabel>
+                        <InputLabel>Sort Date:</InputLabel>
                         <input
                             type="date"
                             placeholder="2023-06-02"
@@ -155,18 +153,19 @@ function Sessions() {
                             onClick={handleDateSorting}
                             label="Primary"
                             primary="true"
-                            style={style}
+                            style={sortButtonStyle}
                         >
                             Sort
                         </Button>
                     </div>
+
                     <div className="sortgroup-container">
-                        <InputLabel>Sort Group</InputLabel>
+                        <InputLabel>Sort Group:</InputLabel>
                         <Select
                             value={groupInput.name}
                             label="Group"
                             onChange={(e) => { setSelectedValue(e.target.value) }}
-                            style={groupStyle}
+                            style={groupSelectStyle}
                             defaultValue="Group 1"
 
                         >
@@ -181,7 +180,7 @@ function Sessions() {
                             onClick={handleGroupSorting}
                             label="Primary"
                             primary="true"
-                            style={style}
+                            style={sortButtonStyle}
                         >
                             Sort
                         </Button>
@@ -230,7 +229,7 @@ function Sessions() {
                             onClick={handlePreviousDate}
                             label="Primary"
                             primary="true"
-                            style={navStyle}
+                            style={navButtonStyle}
                         >
                             Previous
                         </Button>
@@ -239,7 +238,7 @@ function Sessions() {
                             onClick={handleNextDate}
                             label="Primary"
                             primary="true"
-                            style={navStyle}
+                            style={navButtonStyle}
                         >
                             Next
                         </Button>
