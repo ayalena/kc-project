@@ -44,7 +44,7 @@ function NewsItemForm() {
             <main>
                 <form onSubmit={handleSubmit(onFormSubmit)}>
                     <div className="form-container">
-                        <h3>Vul hier je nieuws in!</h3>
+                        <h3>Add a news article below:</h3>
 
                         <div>
                             <label htmlFor="title"> Titel </label>
@@ -54,11 +54,11 @@ function NewsItemForm() {
                                 {...register("title", {
                                     required: {
                                         value: true,
-                                        message: "Titel is verplicht",
+                                        message: "Please add a title",
                                     },
                                     minLength: {
                                         value: 3,
-                                        message: "Titel moet minimaal drie karakters bevatten",
+                                        message: "The title has to be at least 3 characters long",
                                     },
                                 })}
                             />
@@ -73,7 +73,7 @@ function NewsItemForm() {
                                 {...register("author", {
                                     required: {
                                         value: true,
-                                        message: "Auteur is verplicht"
+                                        message: "Please add author"
                                     },
                                 })}
                             />
@@ -90,7 +90,7 @@ function NewsItemForm() {
                                 {...register("content", {
                                     required: {
                                         value: true,
-                                        message: "Content is verplicht"
+                                        message: "PLease add content"
                                     },
                                 })}
                             />
@@ -101,7 +101,7 @@ function NewsItemForm() {
                             <button
                                 type="submit"
                             >
-                                Verstuur
+                                Send!
                             </button>
                         </div>
 
