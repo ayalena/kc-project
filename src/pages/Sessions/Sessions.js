@@ -69,10 +69,10 @@ function Sessions() {
         setFilteredDays(enrichedData);
     }
 
-    const handleGroupChange = (e) => {
-        e.preventDefault();
-        setGroupInput(e.target.value);
-    };
+    // const handleGroupChange = (e) => {
+    //     e.preventDefault();
+    //     setGroupInput(e.target.value);
+    // };
 
     const handlePreviousDate = () => {
         const currentDate = new Date(searchInput);
@@ -136,7 +136,7 @@ function Sessions() {
             <NavBar></NavBar>
             <PageHeader icon={logo} />
             <div className="sessions-container">
-                <h3>Sessions</h3>
+                <h1>Sessions</h1>
                 <div className="sorting-container">
                     <div className="sortdate-container">
                         <InputLabel>Sort Date:</InputLabel>

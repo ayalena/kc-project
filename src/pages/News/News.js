@@ -15,19 +15,19 @@ const style = {
     width: 200,
     marginTop: 30,
     backgroundColor: '#fa5f5f'
-  }
+}
 
 function News() {
     const [isMounted, setIsMounted] = useState(false);
     const [fileLoading, toggleFileLoading] = useState(false);
     const [newsInfo, setNewsInfo] = useState([]);
 
-    const navigate = useNavigate ();
+    const navigate = useNavigate();
 
     function handleClick() {
         navigate("/form");
     }
- 
+
     useEffect(() => {
         setIsMounted(true);
         async function getNewsData() {
@@ -49,32 +49,33 @@ function News() {
     return (
         <>
             <NavBar></NavBar>
-            <PageHeader icon={logo} />          
+            <PageHeader icon={logo} />
             <div className="news-container">
-                <h1>News!</h1>               
-                <div className="newsItems-container">
-                    {newsInfo.map(newsId => (                       
-                           <NewsItem 
-                                key={newsId.id} 
-                                title={newsId.title} 
-                                author={newsId.author} 
-                                content={newsId.content}>
-                            </NewsItem>                        
-                    ))}
-                </div>
+                <h1>News!</h1>
                 <Button
-                    
+
                     variant="contained"
-                            onClick={handleClick}
-                            label="Primary"
-                            primary="true"
-                            style={style}
+                    onClick={handleClick}
+                    label="Primary"
+                    primary="true"
+                    style={style}
                 >
                     Add new post!
-            </Button>  
+                </Button>
+                <div className="newsItems-container">
+                    {newsInfo.map(newsId => (
+                        <NewsItem
+                            key={newsId.id}
+                            title={newsId.title}
+                            author={newsId.author}
+                            content={newsId.content}>
+                        </NewsItem>
+                    ))}
+                </div>
+
             </div>
-             
-            <Footer />     
+
+            <Footer />
         </>
     );
 }
