@@ -7,7 +7,6 @@
 }
 
 :root {
-    /*   color variables */
     --clr-primary: #304ffe;
     --clr-primary-hover: #29e6a7;
     --clr-primary-dark: #039d69;
@@ -16,9 +15,6 @@
     --clr-gray300: #a7b7be;
     --clr-gray400: #6b7e86;
     --clr-gray500: #425a65;
-  
-    /*   border radius */
-    --radius: 0.2rem;
   }
 
 .newsitem-container {
