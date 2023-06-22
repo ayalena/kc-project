@@ -14,7 +14,7 @@ const style = {
     width: 60,
     height: 60,
     transform: 'rotate(12deg)',
-    transition: 'transform 1s ease-in-out',
+    transition: 'all 0.2s ease-in-out',
 };
 
 function Home() {
